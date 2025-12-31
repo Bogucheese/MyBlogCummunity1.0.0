@@ -51,7 +51,7 @@ app.use(
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-const SECRET_KEY = process.env.JWT_SECRET || 'my_secret_key_123456';
+const SECRET_KEY = process.env.JWT_SECRET || 'PUT_YOUR_TOKEN_HERE';
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&.]{8,}$/; // 强密码正则 / Strong password regex
 
 // ================= 2. 邮件服务与存储 =================
@@ -841,5 +841,6 @@ app.delete('/api/admin/dev-logs/:id', adminMiddleware, async (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
+
 
 app.listen(3000, () => { console.log('✅ 服务运行端口 3000 (安全加固版) / Service running on port 3000 (Secured)'); });
